@@ -5,5 +5,6 @@ import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RetrofitInterface {
-
+    @GET("planetary/apod")
+    fun getPictureOfTheDay(@Query("api_key") apiKey : String): Call<ResponseData>
 }
