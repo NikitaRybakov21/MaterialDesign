@@ -1,5 +1,8 @@
 package com.example.materialdesign.viewModel
 
+import android.app.Activity
+import android.provider.ContactsContract
+import android.widget.Toast
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -41,6 +44,10 @@ class PictureViewModel(
         override fun onFailure(call: Call<ResponseData>, t: Throwable) {
             TODO("Not yet implemented")
         }
+    }
+
+    fun getPODFromServer(date : String){
+        retrofit.getRetrofitIml().getPictureOfTheYesterday(date,BuildConfig.NASA_APi_KEY).enqueue(callback)
     }
 
 }

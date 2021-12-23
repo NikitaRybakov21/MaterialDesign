@@ -10,4 +10,10 @@
 
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="descriptions">Descriptions</string>
+    <string name="today">today</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="before_yesterday">BeforeYesterday</string>
+    <string name="options">Options</string>
+    <string name="dark_theme">DarkTheme</string>
+    <string name="light_theme">LightTheme</string>
 </resources>
