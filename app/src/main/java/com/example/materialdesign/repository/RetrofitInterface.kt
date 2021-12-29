@@ -11,6 +11,4 @@ interface RetrofitInterface {
 
     @GET("planetary/apod")
     fun getPictureOfTheYesterday( @Query("date") dataTime : String, @Query("api_key") apiKey : String): Call<ResponseData>
-
-
 }

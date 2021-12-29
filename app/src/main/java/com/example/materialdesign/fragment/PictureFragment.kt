@@ -6,17 +6,18 @@ import android.icu.text.SimpleDateFormat
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentMainBinding
+import com.example.materialdesign.main.MainActivity
 import com.example.materialdesign.viewModel.AppState
 import com.example.materialdesign.viewModel.PictureViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
@@ -47,9 +48,9 @@ class PictureFragment : Fragment() {
 
         viewModel.sendServer()
         searchWiki()
-        bottomAppBar()
         bottomSheet()
         chipPicture()
+        setBottomAppBar()
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -92,12 +93,12 @@ class PictureFragment : Fragment() {
         behavior.addBottomSheetCallback(object : BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
-                  /* BottomSheetBehavior.STATE_DRAGGING -> TODO("not implemented")
+                  /* BottomSheetBehavior.STATE_DRAGGING ->  TODO("not implemented")
                      BottomSheetBehavior.STATE_COLLAPSED -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_EXPANDED -> TODO("not implemented")
+                     BottomSheetBehavior.STATE_EXPANDED ->  TODO("not implemented")
                      BottomSheetBehavior.STATE_HALF_EXPANDED -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_HIDDEN -> TODO("not implemented")
-                     BottomSheetBehavior.STATE_SETTLING -> TODO("not implemented")*/
+                     BottomSheetBehavior.STATE_HIDDEN ->    TODO("not implemented")
+                     BottomSheetBehavior.STATE_SETTLING ->  TODO("not implemented")*/
                 }
             }
 
@@ -107,20 +108,31 @@ class PictureFragment : Fragment() {
         })
     }
 
-    private fun bottomAppBar() = with(binding) {
-        bottomAppBar.setOnMenuItemClickListener { item ->
-            if (item.itemId == R.id.app_bar_fav) {
-                Toast.makeText(requireContext(), "fav", Toast.LENGTH_SHORT).show()
-            }
-            if (item.itemId == R.id.app_bar_settings) {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.bottom_app_bar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> BottomNavigationFragment().show(requireActivity().supportFragmentManager, "")
+
+            R.id.app_bar_settings -> {
                 requireActivity().supportFragmentManager
-                  .beginTransaction()
-                  .replace(R.id.container,OptionsFragment.newInstance())
-                  .addToBackStack("stack1")
-                  .commit()
+                    .beginTransaction()
+                    .replace(R.id.container,OptionsFragment.newInstance())
+                    .addToBackStack("stack1")
+                    .commit()
             }
-            true
+            R.id.app_bar_fav -> Toast.makeText(requireContext(), "fav", Toast.LENGTH_SHORT).show()
         }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setBottomAppBar() = with(binding) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(bottomAppBar)
+        setHasOptionsMenu(true)
     }
 
     private fun searchWiki() {
