@@ -1,12 +1,16 @@
 package com.example.materialdesign.fragment
 
+import android.annotation.SuppressLint
 import android.content.Intent
+import android.icu.text.SimpleDateFormat
 import android.net.Uri
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +20,7 @@ import com.example.materialdesign.databinding.FragmentMainBinding
 import com.example.materialdesign.viewModel.AppState
 import com.example.materialdesign.viewModel.PictureViewModel
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import java.util.*
 
 class PictureFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
@@ -35,6 +40,7 @@ class PictureFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.N)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewModel.getData().observe(viewLifecycleOwner, Observer { it -> renderData(it) })
@@ -43,6 +49,41 @@ class PictureFragment : Fragment() {
         searchWiki()
         bottomAppBar()
         bottomSheet()
+        chipPicture()
+    }
+
+    @RequiresApi(Build.VERSION_CODES.N)
+    @SuppressLint("SimpleDateFormat")
+    private fun chipPicture() = with(binding){
+
+        val c = Calendar.getInstance()
+
+        val year = Integer.parseInt(SimpleDateFormat("yyyy").format(c.time))
+        val moth = Integer.parseInt(SimpleDateFormat("MM"  ).format(c.time))
+        val day  = Integer.parseInt(SimpleDateFormat("dd"  ).format(c.time))
+
+        chipGroup.check(R.id.chipToday)
+
+        chipToday.setOnClickListener {
+            chipGroup.clearCheck()
+            chipGroup.check(R.id.chipToday)
+
+            viewModel.getPODFromServer("$year-$moth-$day")
+        }
+
+        chipYesterday.setOnClickListener {
+            chipGroup.clearCheck()
+            chipGroup.check(R.id.chipYesterday)
+
+            viewModel.getPODFromServer("$year-$moth-${day - 1}")
+        }
+
+        chipDayBeforeYesterday.setOnClickListener {
+            chipGroup.clearCheck()
+            chipGroup.check(R.id.chipDayBeforeYesterday)
+
+            viewModel.getPODFromServer("$year-$moth-${day - 2}")
+        }
     }
 
     private fun bottomSheet() {
@@ -74,7 +115,7 @@ class PictureFragment : Fragment() {
             if (item.itemId == R.id.app_bar_settings) {
                 requireActivity().supportFragmentManager
                   .beginTransaction()
-                  .replace(R.id.container,ChipFragment.newInstance())
+                  .replace(R.id.container,OptionsFragment.newInstance())
                   .addToBackStack("stack1")
                   .commit()
             }
@@ -93,7 +134,7 @@ class PictureFragment : Fragment() {
 
     private fun renderData(state: AppState) {
         when (state) {
-            is AppState.Error ->   {  binding.imageView.load(R.drawable.ic_load_error_vector) }
+            is AppState.Error   -> {  binding.imageView.load(R.drawable.ic_load_error_vector) }
             is AppState.Loading -> {  binding.imageView.load(R.drawable.ic_no_photo_vector)   }
             is AppState.Success -> {
                 val responseData = state.responseData

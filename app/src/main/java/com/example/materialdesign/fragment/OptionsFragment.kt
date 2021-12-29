@@ -5,11 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.materialdesign.databinding.FragmentChipsBinding
+import com.example.materialdesign.databinding.FragmentOptionsBinding
 
-class ChipFragment : Fragment() {
-    private var _binding: FragmentChipsBinding? = null
-    private val binding: FragmentChipsBinding get() = _binding!!
+class OptionsFragment : Fragment() {
+    private var _binding: FragmentOptionsBinding? = null
+    private val binding: FragmentOptionsBinding get() = _binding!!
 
     override fun onDestroy() {
         super.onDestroy()
@@ -17,7 +17,7 @@ class ChipFragment : Fragment() {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
-        _binding = FragmentChipsBinding.inflate(inflater, container, false)
+        _binding = FragmentOptionsBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -27,6 +27,6 @@ class ChipFragment : Fragment() {
 
     companion object {
         @JvmStatic
-        fun newInstance() = ChipFragment()
+        fun newInstance() = OptionsFragment()
     }
 }
