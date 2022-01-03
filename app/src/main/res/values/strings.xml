@@ -16,4 +16,9 @@
     <string name="options">Options</string>
     <string name="dark_theme">DarkTheme</string>
     <string name="light_theme">LightTheme</string>
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <string name="earth">Earth</string>
+    <string name="system">System</string>
+    <string name="mars">Mars</string>
 </resources>
