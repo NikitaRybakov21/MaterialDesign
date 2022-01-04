@@ -21,4 +21,7 @@
     <string name="earth">Earth</string>
     <string name="system">System</string>
     <string name="mars">Mars</string>
+    <string name="pictureDay">PictureDay</string>
+    <string name="planet">Planet</string>
+    <string name="coordinator">Coordinator</string>
 </resources>

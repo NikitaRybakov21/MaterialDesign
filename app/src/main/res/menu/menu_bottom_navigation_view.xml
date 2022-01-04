@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_one"
+        android:icon="@drawable/ic_baseline_insert_photo_24"
+        android:title="@string/pictureDay" />
+    <item
+        android:id="@+id/navigation_two"
+        android:icon="@drawable/ic_mars"
+        android:title="@string/planet" />
+
+    <item
+        android:id="@+id/navigation_four"
+        android:icon="@drawable/ic_telescope"
+        android:title="@string/coordinator" />
+
+    <item
+        android:id="@+id/navigation_three"
+        android:icon="@drawable/ic_settings_menu"
+        android:title="@string/options" />
+</menu>
