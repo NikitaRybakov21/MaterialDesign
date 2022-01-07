@@ -5,9 +5,17 @@
     android:id="@+id/constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="8dp"
-    android:background="?attr/colorOnPrimary"
     app:singleSelection="true">
+
+    <TextView
+        android:id="@+id/textPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/picture_of_the_day"
+        android:layout_marginStart="16dp"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
@@ -16,7 +24,7 @@
         android:orientation="horizontal"
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/textPicture">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chipToday"

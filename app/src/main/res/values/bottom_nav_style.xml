@@ -2,6 +2,6 @@
 <resources>
     <style name="BottomNavView" parent="Widget.Design.BottomNavigationView">
         <item name="elevation">30dp</item>
-        <item name="backgroundTint">@color/white</item>
+        <item name="backgroundTint">#FFFFFF</item>
     </style>
 </resources>
