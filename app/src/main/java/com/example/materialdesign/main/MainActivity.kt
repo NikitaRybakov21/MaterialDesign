@@ -2,8 +2,8 @@ package com.example.materialdesign.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.materialdesign.fragment.PictureFragment
 import com.example.materialdesign.R
+import com.example.materialdesign.fragment.mainFragments.MainContainerFragment
 
 class MainActivity : AppCompatActivity() {
     private val KEY = "Theme"
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
         if(savedInstanceState == null){
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.container, PictureFragment.newInstance())
+                .replace(R.id.container, MainContainerFragment.newInstance())
                 .commit()
         }
     }

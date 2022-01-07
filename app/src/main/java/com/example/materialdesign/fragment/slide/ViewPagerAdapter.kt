@@ -8,8 +8,7 @@ private const val EARTH_FRAGMENT  = 0
 private const val MARS_FRAGMENT   = 1
 private const val SYSTEM_FRAGMENT = 2
 
-// TODO
-class ViewPagerAdapter(private val fm : FragmentManager) : FragmentStatePagerAdapter(fm)  {
+class ViewPagerAdapter(fm : FragmentManager) : FragmentStatePagerAdapter(fm)  {
     private val fragments = arrayOf(EarthFragment(),MarsFragment(),SystemFragment())
 
     override fun getCount() = fragments.size
@@ -22,13 +21,4 @@ class ViewPagerAdapter(private val fm : FragmentManager) : FragmentStatePagerAda
             else -> fragments[EARTH_FRAGMENT]
         }
     }
-
- /* override fun getPageTitle(position: Int): CharSequence {
-        return when(position){
-            EARTH_FRAGMENT  -> "EARTH"
-            MARS_FRAGMENT   -> "MARS"
-            SYSTEM_FRAGMENT -> "SYSTEM"
-            else -> "EARTH"
-        }
-    } */
 }

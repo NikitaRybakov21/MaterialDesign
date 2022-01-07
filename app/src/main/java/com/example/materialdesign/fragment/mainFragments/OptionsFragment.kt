@@ -1,4 +1,4 @@
-package com.example.materialdesign.fragment
+package com.example.materialdesign.fragment.mainFragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
