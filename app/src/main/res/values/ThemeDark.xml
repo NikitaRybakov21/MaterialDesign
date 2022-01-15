@@ -3,7 +3,7 @@
     <style name="ThemeDark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">#2B776E</item>
+        <item name="colorPrimaryVariant">#FFFFFF</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -13,8 +13,8 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
 
-        <item name="colorBottomSheet">#D8AF36</item>
-        <item name="colorWiki">#504E4A</item>
+        <item name="colorBottomSheet">#EFEFEF</item>
+        <item name="colorWiki">#E3DED5</item>
 
     </style>
 </resources>

@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.MainContainerFragmentBinding
+import com.example.materialdesign.fragment.animation.AnimationsFragment
 import com.example.materialdesign.fragment.coordinator.CoordinatorFragment
 import com.example.materialdesign.fragment.slide.PlanetFragment
 
@@ -32,28 +33,30 @@ class MainContainerFragment : Fragment() {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.mainContainer, PictureFragment.newInstance())
-                        .addToBackStack("stack1")
                         .commit()
                 }
                 R.id.navigation_two -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.mainContainer, PlanetFragment.newInstance())
-                        .addToBackStack("stack1")
                         .commit()
                 }
                 R.id.navigation_three -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.mainContainer, OptionsFragment.newInstance())
-                        .addToBackStack("stack1")
                         .commit()
                 }
                 R.id.navigation_four -> {
                     requireActivity().supportFragmentManager
                         .beginTransaction()
                         .replace(R.id.mainContainer, CoordinatorFragment.newInstance())
-                        .addToBackStack("stack1")
+                        .commit()
+                }
+                R.id.navigation_five -> {
+                    requireActivity().supportFragmentManager
+                        .beginTransaction()
+                        .replace(R.id.mainContainer, AnimationsFragment.newInstance())
                         .commit()
                 }
             }
@@ -62,7 +65,7 @@ class MainContainerFragment : Fragment() {
     }
 
     private fun setFirstFragment(){
-        binding.bottomNavigationView.selectedItemId = R.id.navigation_one
+        binding.bottomNavigationView.selectedItemId = R.id.navigation_five
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
