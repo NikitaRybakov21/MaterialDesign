@@ -13,14 +13,14 @@ import androidx.fragment.app.Fragment
 import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.example.materialdesign.R
-import com.example.materialdesign.databinding.AnimationFragmentBinding
+import com.example.materialdesign.databinding.FragmentAnimationBinding
 
 class AnimationsFragment : Fragment() {
-    private var _binding: AnimationFragmentBinding? = null
-    private val binding: AnimationFragmentBinding get() = _binding!!
+    private var _binding: FragmentAnimationBinding? = null
+    private val binding: FragmentAnimationBinding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = AnimationFragmentBinding.inflate(inflater,container,false)
+        _binding = FragmentAnimationBinding.inflate(inflater,container,false)
         return binding.root
     }
 
@@ -43,7 +43,7 @@ class AnimationsFragment : Fragment() {
             animator.start()
 
             val constraint = ConstraintSet()
-            constraint.clone(requireContext(), R.layout.animation_fragment)
+            constraint.clone(requireContext(), R.layout.fragment_animation)
             constraint.connect(R.id.customButton,ConstraintSet.BOTTOM, R.id.containerForButton, ConstraintSet.BOTTOM)
             constraint.connect(R.id.customButton,ConstraintSet.TOP, R.id.containerForButton, ConstraintSet.TOP)
             constraint.connect(R.id.view,ConstraintSet.TOP, R.id.containerForButton, ConstraintSet.TOP)
