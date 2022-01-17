@@ -36,4 +36,7 @@
     <string name="list_notes">Список заметок</string>
     <string name="header">#Header</string>
     <string name="tools">Поешь этих францкзких булок</string>
+    <string name="edit">Edit</string>
+    <string name="create_notes">Create Notes</string>
+    <string name="apply">Apply</string>
 </resources>

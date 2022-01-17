@@ -3,6 +3,7 @@ package com.example.materialdesign.fragment.recycler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +32,14 @@ class RecyclerAdapter(private val data: ArrayList<Data>, private val fragment: R
 
                 holderNotes.text.text = data[position].text
                 holderNotes.itemRemoved()
+
+                holderNotes.editView.setOnClickListener {
+                    fragment.callbackRecycler(holderNotes)
+                }
+
+                holderNotes.up.setOnClickListener   { holderNotes.moveUp()   }
+                holderNotes.down.setOnClickListener { holderNotes.moveDown() }
+
             }
             else -> {
                 val holderHeader = (holder as NewViewHolderHeader)
@@ -56,6 +65,9 @@ class RecyclerAdapter(private val data: ArrayList<Data>, private val fragment: R
     inner class NewViewHolderNotes(view : View) : RecyclerView.ViewHolder(view) {
         val text: TextView = view.findViewById(R.id.textView)
         private val close: ImageView = view.findViewById(R.id.close)
+        val editView: TextView = view.findViewById(R.id.editView)
+        val up: ImageView = view.findViewById(R.id.up)
+        val down: ImageView = view.findViewById(R.id.down)
 
         fun itemRemoved(){
             close.setOnClickListener {
@@ -63,6 +75,42 @@ class RecyclerAdapter(private val data: ArrayList<Data>, private val fragment: R
                 notifyItemRemoved(layoutPosition)
             }
         }
+
+        fun editNotes(text: String){
+            data.removeAt(layoutPosition)
+            data.add(layoutPosition, Data(text, TYPE_NOTES))
+            notifyItemChanged(layoutPosition)
+        }
+
+        fun moveUp() {
+            if(layoutPosition == 1){
+                data.removeAt(layoutPosition).apply {
+                    data.add(data.size - 1, this)
+                }
+                notifyItemMoved(layoutPosition, data.size - 1)
+
+            } else {
+                data.removeAt(layoutPosition).apply {
+                    data.add(layoutPosition - 1, this)
+                }
+                notifyItemMoved(layoutPosition, layoutPosition - 1)
+            }
+        }
+
+        fun moveDown() {
+            if(layoutPosition == data.size - 1) {
+                data.removeAt(layoutPosition).apply {
+                    data.add(1, this)
+                }
+                notifyItemMoved(layoutPosition, 1)
+            } else {
+                data.removeAt(layoutPosition).apply {
+                    data.add(layoutPosition + 1, this)
+                }
+                notifyItemMoved(layoutPosition, layoutPosition + 1)
+            }
+        }
+
     }
 
     inner class NewViewHolderHeader(view : View) : RecyclerView.ViewHolder(view) {
