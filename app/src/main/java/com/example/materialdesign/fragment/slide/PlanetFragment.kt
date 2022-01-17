@@ -7,14 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.materialdesign.R
-import com.example.materialdesign.databinding.PlanetFragmentBinding
+import com.example.materialdesign.databinding.FragmentPlanetBinding
 
 class PlanetFragment : Fragment() {
-    private var _binding : PlanetFragmentBinding? = null
-    private val binding : PlanetFragmentBinding get() = _binding!!
+    private var _binding : FragmentPlanetBinding? = null
+    private val binding : FragmentPlanetBinding get() = _binding!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        _binding = PlanetFragmentBinding.inflate(inflater,container,false)
+        _binding = FragmentPlanetBinding.inflate(inflater,container,false)
         return binding.root
     }
 

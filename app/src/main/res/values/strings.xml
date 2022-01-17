@@ -28,4 +28,12 @@
     <string name="welcome_to_app_nasa">Welcome to App NASA</string>
     <string name="home">Home</string>
     <string name="picture_of_the_day">Picture Of the day</string>
+    <string name="calendar">Calendar</string>
+    <string name="info">Info</string>
+    <string name="setting">Setting</string>
+    <string name="random">Random</string>
+    <string name="recycler">Recycler</string>
+    <string name="list_notes">Список заметок</string>
+    <string name="header">#Header</string>
+    <string name="tools">Поешь этих францкзких булок</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.example.materialdesign.fragment.mainFragments
 
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.icu.text.SimpleDateFormat
@@ -44,6 +45,8 @@ class PictureFragment : Fragment() {
         viewModel.sendServer()
         searchWiki()
         chipPicture()
+        calendarView()
+        randomDate()
     }
 
     @RequiresApi(Build.VERSION_CODES.N)
@@ -77,6 +80,29 @@ class PictureFragment : Fragment() {
             chipGroup.check(R.id.chipDayBeforeYesterday)
 
             viewModel.getPODFromServer("$year-$moth-${day - 2}")
+        }
+    }
+
+    private fun calendarView(){
+        binding.calendar.setOnDateChangeListener { view, year, month, dayOfMonth ->
+            val selectedDate = "$year-${month + 1}-$dayOfMonth"
+            viewModel.getPODFromServer(selectedDate)
+
+            ObjectAnimator.ofFloat(binding.calendar,View.TRANSLATION_Y,-1300f).setDuration(1000).start()
+        }
+
+        binding.buttonCalendar.setOnClickListener {
+            binding.chipGroup.clearCheck()
+            ObjectAnimator.ofFloat(binding.calendar,View.TRANSLATION_Y,1300f).setDuration(1000).start()
+        }
+    }
+
+    private fun randomDate(){
+        binding.buttonRandom.setOnClickListener {
+            binding.chipGroup.clearCheck()
+
+            val random = Random()
+            viewModel.getPODFromServer("${2021}-${random.nextInt(11) + 1}-${random.nextInt(29) + 1}")
         }
     }
 

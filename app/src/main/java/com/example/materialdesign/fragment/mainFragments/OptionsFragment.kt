@@ -15,11 +15,6 @@ class OptionsFragment : Fragment() {
 
     private val KEY = "Theme"
 
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
-    }
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         _binding = FragmentOptionsBinding.inflate(inflater, container, false)
         return binding.root
@@ -50,5 +45,10 @@ class OptionsFragment : Fragment() {
     companion object {
         @JvmStatic
         fun newInstance() = OptionsFragment()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
