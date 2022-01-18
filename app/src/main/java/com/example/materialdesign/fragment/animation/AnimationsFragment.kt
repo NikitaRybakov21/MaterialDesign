@@ -2,12 +2,19 @@ package com.example.materialdesign.fragment.animation
 
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
+import android.graphics.Typeface
+import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.BulletSpan
+import android.text.style.QuoteSpan
 import android.util.Property
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AnticipateOvershootInterpolator
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.transition.ChangeBounds
@@ -24,8 +31,24 @@ class AnimationsFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.P)
+    @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.textHeader.typeface = Typeface.createFromAsset(requireContext().assets,"font/rany.otf")
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            binding.textHeader.typeface = resources.getFont(R.font.rany)
+        }
+
+        val span = SpannableStringBuilder("Welcome to App NASA")
+        span.setSpan(QuoteSpan(R.color.colorAccent,10,10),0 , 19,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            span.setSpan(BulletSpan(20,resources.getColor(R.color.colorAccent),20),0,19,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
+        }
+
+        binding.textHeader.text = span
 
         animation()
     }

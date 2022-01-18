@@ -1,5 +1,6 @@
 package com.example.materialdesign.fragment.recycler
 
+import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.materialdesign.databinding.FragmentRecyclerBinding
+import java.text.FieldPosition
 
 class RecyclerFragment : Fragment() {
     private var _binding : FragmentRecyclerBinding? = null
@@ -29,34 +31,34 @@ class RecyclerFragment : Fragment() {
 
         val data = ArrayList<Data>()
         data.add(Data("#Важное", TYPE_HEADER))
-        data.add(Data("notes1", TYPE_NOTES))
-        data.add(Data("notes2", TYPE_NOTES))
-        data.add(Data("notes3", TYPE_NOTES))
-        data.add(Data("notes4", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
         data.add(Data("#Телефоны", TYPE_HEADER))
-        data.add(Data("notes5", TYPE_NOTES))
-        data.add(Data("notes6", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
-        data.add(Data("notes7", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
+
 
         recyclerView.adapter = RecyclerAdapter(data,this@RecyclerFragment)
     }
 
-    fun callbackRecycler(){
+    fun callbackRecycler(holder: RecyclerAdapter.NewViewHolderNotes) {
+        showCreateNotes()
 
+        binding.buttonApply.setOnClickListener {
+            val text = binding.editText.editableText.toString()
+            hideCreateNotes()
+            holder.editNotes(text)
+        }
+    }
+
+    private fun showCreateNotes(){
+        ObjectAnimator.ofFloat(binding.containerCreateNotes,View.TRANSLATION_Y,-500f).start()
+    }
+
+    private fun hideCreateNotes(){
+        ObjectAnimator.ofFloat(binding.containerCreateNotes,View.TRANSLATION_Y,500f).start()
     }
 
     companion object {
