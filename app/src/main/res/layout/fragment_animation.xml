@@ -6,6 +6,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageView
+        android:id="@+id/bg_start"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_start"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/click"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:text="@string/click_for_start_animation"
+        android:layout_marginStart="8dp"
+        android:textColor="@color/colorAccent"
+        android:alpha="0.6"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/customButton"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <FrameLayout
         android:id="@+id/frameContainer"
         android:layout_width="match_parent"
@@ -16,7 +40,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/bg"/>
+            android:src="@drawable/bg" />
 
     </FrameLayout>
 
@@ -39,7 +63,6 @@
         android:textSize="35sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:textColor="@color/black"
         tools:alpha="100"/>
 
     <ImageView

@@ -46,7 +46,6 @@ class MainContainerFragment : Fragment() {
             if (it.itemId == R.id.setting){
                 requireActivity().supportFragmentManager
                     .beginTransaction()
-                    .setCustomAnimations(R.anim.anim_layout_2,R.anim.anim_layout)
                     .replace(R.id.mainContainer, OptionsFragment.newInstance())
                     .addToBackStack("stack")
                     .commit()
@@ -57,9 +56,8 @@ class MainContainerFragment : Fragment() {
         }
 
         binding.back.setOnClickListener {
-            binding.back.visibility = View.GONE
-
             activity?.supportFragmentManager?.popBackStack()
+            binding.back.visibility = View.GONE
         }
     }
 

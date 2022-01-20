@@ -38,6 +38,10 @@ class RecyclerFragment : Fragment() {
         data.add(Data("notes", TYPE_NOTES))
         data.add(Data("notes", TYPE_NOTES))
         data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("#Другое", TYPE_HEADER))
+        data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
+        data.add(Data("notes", TYPE_NOTES))
 
 
         recyclerView.adapter = RecyclerAdapter(data,this@RecyclerFragment)

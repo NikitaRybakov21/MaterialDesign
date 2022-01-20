@@ -2,8 +2,11 @@
 <resources>
 
     <declare-styleable name="colors">
-        <attr name="colorBottomSheet" format="color"/>
         <attr name="colorWiki" format="color"/>
+        <attr name="white100" format="color"/>
+        <attr name="toolbarColor_and_bottomNav" format="color"/>
+        <attr name="description" format="color"/>
+
     </declare-styleable>
 
 </resources>
