@@ -10,7 +10,7 @@
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
         android:layout_marginTop="8dp"
-        android:backgroundTint="@color/white"
+        android:backgroundTint="?attr/toolbarColor_and_bottomNav"
         android:elevation="4dp"
         app:cardCornerRadius="12dp"
         app:layout_constraintEnd_toEndOf="parent"

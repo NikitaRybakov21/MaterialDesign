@@ -39,4 +39,6 @@
     <string name="edit">Edit</string>
     <string name="create_notes">Create Notes</string>
     <string name="apply">Apply</string>
+    <string name="description">Description</string>
+    <string name="click_for_start_animation">Click for start animation</string>
 </resources>

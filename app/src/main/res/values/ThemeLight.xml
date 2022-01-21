@@ -11,10 +11,12 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+
         <!-- Customize your theme here. -->
-
-        <item name="colorBottomSheet">#EFEFEF</item>
         <item name="colorWiki">#E3DED5</item>
-
+        <item name="white100">#F8F8F8</item>
+        <item name="toolbarColor_and_bottomNav">#FFFFFF</item>
+        <item name="description">#F6F6F6</item>
     </style>
 </resources>

@@ -21,6 +21,8 @@ import androidx.transition.ChangeBounds
 import androidx.transition.TransitionManager
 import com.example.materialdesign.R
 import com.example.materialdesign.databinding.FragmentAnimationBinding
+import com.example.materialdesign.main.MainActivity
+import com.example.materialdesign.main.SavedOptions
 
 class AnimationsFragment : Fragment() {
     private var _binding: FragmentAnimationBinding? = null
@@ -35,10 +37,11 @@ class AnimationsFragment : Fragment() {
     @SuppressLint("ResourceAsColor")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        loadBg()
 
         binding.textHeader.typeface = Typeface.createFromAsset(requireContext().assets,"font/rany.otf")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            binding.textHeader.typeface = resources.getFont(R.font.rany)
+            binding.textHeader.typeface = resources.getFont(R.font.current)
         }
 
         val span = SpannableStringBuilder("Welcome to App NASA")
@@ -47,15 +50,24 @@ class AnimationsFragment : Fragment() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
             span.setSpan(BulletSpan(20,resources.getColor(R.color.colorAccent),20),0,19,Spannable.SPAN_INCLUSIVE_INCLUSIVE)
         }
-
-        binding.textHeader.text = span
-
         animation()
+    }
+
+    private fun loadBg(){
+        val options = SavedOptions.getOptions(requireActivity() as MainActivity)
+        val op = options.load("Theme")
+
+        if(op){
+            binding.bgStart.setImageResource(R.drawable.bg_start_dark)
+        }else{
+            binding.bgStart.setImageResource(R.drawable.bg_start)
+        }
     }
 
     @SuppressLint("Recycle")
     private fun animation() = with(binding){
         customButton.setOnClickListener {
+            binding.click.text = ""
 
             customButton.setAnimation(true)
             val delay = 5000L

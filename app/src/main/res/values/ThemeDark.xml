@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <style name="ThemeDark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="ThemeDark" parent="ThemeOverlay.MaterialComponents.Dark">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">#FFFFFF</item>
+        <item name="colorPrimaryVariant">#868686</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">@color/teal_200</item>
@@ -11,10 +11,12 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+
         <!-- Customize your theme here. -->
-
-        <item name="colorBottomSheet">#EFEFEF</item>
         <item name="colorWiki">#E3DED5</item>
-
+        <item name="white100">#333335</item>
+        <item name="toolbarColor_and_bottomNav">#868686</item>
+        <item name="description">#868686</item>
     </style>
 </resources>

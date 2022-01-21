@@ -127,6 +127,7 @@ class PictureFragment : Fragment() {
                 val responseData = state.responseData
                 val url = responseData.url
                 binding.imageView.load(url) {}
+                binding.descriptionText.text = responseData.explanation
             }
         }
     }
