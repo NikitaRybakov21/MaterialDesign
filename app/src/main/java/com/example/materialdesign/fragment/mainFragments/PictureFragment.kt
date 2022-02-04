@@ -47,7 +47,19 @@ class PictureFragment : Fragment() {
         chipPicture()
         calendarView()
         randomDate()
+
+        binding.buttonRandom.setOnClickListener {
+            viewModel.sendRx("Событие 1..........")
+        }
+
+        viewModel.getLiveDataReactive().observe(viewLifecycleOwner, Observer { it -> rxData(it) })
     }
+
+    private fun rxData(string: String){
+        print(string)
+    }
+
+
 
     @RequiresApi(Build.VERSION_CODES.N)
     @SuppressLint("SimpleDateFormat")
