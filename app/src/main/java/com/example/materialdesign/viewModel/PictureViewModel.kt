@@ -1,14 +1,14 @@
 package com.example.materialdesign.viewModel
 
-import android.app.Activity
-import android.provider.ContactsContract
-import android.widget.Toast
 import androidx.lifecycle.LiveData
+import androidx.lifecycle.LiveDataReactiveStreams
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.materialdesign.BuildConfig
 import com.example.materialdesign.repository.RetrofitImpl
 import com.example.materialdesign.repository.ResponseData
+import io.reactivex.rxjava3.core.BackpressureStrategy
+import io.reactivex.rxjava3.subjects.PublishSubject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +29,18 @@ class PictureViewModel(
         } else {
             retrofit.getRetrofitIml().getPictureOfTheDay(apikey).enqueue(callback)
         }
+    }
+
+    private val publishSubject = PublishSubject.create<String>()
+
+    fun getLiveDataReactive() = LiveDataReactiveStreams.fromPublisher(publishSubject.toFlowable(BackpressureStrategy.BUFFER))
+
+    fun sendRx(string: String){
+        publishSubject.doOnSubscribe { print("Подписка")}
+        publishSubject.onNext(string)
+        publishSubject.onNext(string)
+
+        publishSubject.onComplete()
     }
 
     private val callback = object : Callback<ResponseData> {

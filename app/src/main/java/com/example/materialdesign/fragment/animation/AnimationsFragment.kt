@@ -39,7 +39,7 @@ class AnimationsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         loadBg()
 
-        binding.textHeader.typeface = Typeface.createFromAsset(requireContext().assets,"font/rany.otf")
+        //binding.textHeader.typeface = Typeface.createFromAsset(requireContext().assets,"font/rany.otf")
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             binding.textHeader.typeface = resources.getFont(R.font.current)
         }
